@@ -7,56 +7,51 @@ pipeline {
   stages {
     stage('Deploy result App') {
       steps {
-        sh 'cd Deployment'
-         kubernetesDeploy(configs: "result-app-deployment.yml", kubeconfigId: "mykubeconfig")
+         kubernetesDeploy(configs: "Deployment/result-app-deployment.yml", kubeconfigId: "mykubeconfig")
       }
     } 
     stage('Deploy vote App') {
       steps {
-         kubernetesDeploy(configs: "voting-app-deployment.yml", kubeconfigId: "mykubeconfig")
+         kubernetesDeploy(configs: "Deployment/voting-app-deployment.yml", kubeconfigId: "mykubeconfig")
       }
     }
     stage('Deploy worker App') {
       steps {
-        ubernetesDeploy(configs: "worker-app-deployment.yml", kubeconfigId: "mykubeconfig")
+        ubernetesDeploy(configs: "Deployment/worker-app-deployment.yml", kubeconfigId: "mykubeconfig")
       }
     }
 
     stage('Deploy postgres DB') {
       steps {
-        ubernetesDeploy(configs: "postgres-deployment.yml", kubeconfigId: "mykubeconfig")
+        ubernetesDeploy(configs: "Deployment/postgres-deployment.yml", kubeconfigId: "mykubeconfig")
       }
     }
 
     stage('Deploy redis DB') {
       steps {
-        ubernetesDeploy(configs: "redis-deployment.yml", kubeconfigId: "mykubeconfig")
+        ubernetesDeploy(configs: "Deployment/redis-deployment.yml", kubeconfigId: "mykubeconfig")
       }
     }
 
     stage('Deploy result service') {
       steps {
-        sh """
-        cd ..
-        cd Services
-        """
-        ubernetesDeploy(configs: "result-app-service.yml", kubeconfigId: "mykubeconfig")
+        ubernetesDeploy(configs: "Services/result-app-service.yml", kubeconfigId: "mykubeconfig")
       }
     }
     stage('Deploy vote service') {
       steps {
-        ubernetesDeploy(configs: "voting-app-service.yml", kubeconfigId: "mykubeconfig")
+        ubernetesDeploy(configs: "Services/voting-app-service.yml", kubeconfigId: "mykubeconfig")
       }
     }
     stage('Deploy postgres service') {
       steps {
-        ubernetesDeploy(configs: "postgres-service.yml", kubeconfigId: "mykubeconfig")
+        ubernetesDeploy(configs: "Services/postgres-service.yml", kubeconfigId: "mykubeconfig")
       }
     }
 
     stage('Deploy redis service') {
       steps {
-        ubernetesDeploy(configs: "redis-service.yml", kubeconfigId: "mykubeconfig")
+        ubernetesDeploy(configs: "Services/redis-service.yml", kubeconfigId: "mykubeconfig")
       }
     }
     
