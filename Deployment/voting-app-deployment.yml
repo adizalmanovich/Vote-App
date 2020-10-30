@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-app-deployment
+  labels:
+    app: my-voting-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: voting-app-pod
+      app: my-voting-app
+  template:
+    metadata:
+      name: voting-app-pod
+      labels:
+        name: voting-app-pod
+        app: my-voting-app
+
+    spec:
+      containers:
+      - name: voting-app
+        image: docker-registry.local.com:5000/votingapp_vote:latest
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: mydockercred  

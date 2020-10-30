@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  labels:
+    app: my-voting-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: redis-pod
+      app: my-voting-app
+  template:
+    metadata:
+      name: redis-pod
+      labels:
+        name: redis-pod
+        app: my-voting-app
+
+    spec:
+      containers:
+      - name: redis
+        image: docker-registry.local.com:5000/redis:latest
+        ports:
+        - containerPort: 6379
+      imagePullSecrets:
+      - name: mydockercred

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-app-deployment
+  labels:
+    app: my-voting-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: worker-app-pod
+      app: my-voting-app
+  template:
+    metadata:
+      name: worker-app-pod
+      labels:
+        name: worker-app-pod
+        app: my-voting-app
+
+    spec:
+      containers:
+      - name: worker-app
+        image: docker-registry.local.com:5000/votingapp_worker:latest
+      imagePullSecrets:
+      - name: mydockercred  
