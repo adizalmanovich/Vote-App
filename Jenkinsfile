@@ -2,7 +2,7 @@ pipeline {
   agent {
     node {
       stage('Checkout') {
-      git url: 'https://github.com/adizalmanovich/Voting-App.git'
+      git url: 'https://github.com/adizalmanovich/Voting-App.git' }
     }
   }	
   stages {
