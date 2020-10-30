@@ -3,6 +3,7 @@ pipeline {
     node {
       label 'kubepod'
       }	
+  }
   stages {
     stage('Build result') {
       steps {
