@@ -1,6 +1,6 @@
 pipeline {
-  
-	node {
+  agent none
+	
     stage('Build result') {
       steps {
 	sh """
@@ -58,5 +58,5 @@ pipeline {
         }
       }
     }
-  }	 
+  	 
 }
