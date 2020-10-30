@@ -4,6 +4,7 @@ pipeline {
       stage('Checkout') {
       git url: 'https://github.com/adizalmanovich/Voting-App.git'
     }
+  }	
   stages {
     stage('Build result') {
       steps {
