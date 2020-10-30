@@ -1,10 +1,8 @@
 pipeline {
   agent {
     node {
-      stage('Checkout') {
-      git url: 'https://github.com/adizalmanovich/Voting-App.git' }
-    }
-  }	
+      label 'kubepod'
+      }	
   stages {
     stage('Build result') {
       steps {
