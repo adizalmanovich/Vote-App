@@ -1,9 +1,9 @@
 pipeline {
   agent {
     node {
-      label 'ubuntu-1604-aufs-stable'
+      stage('Checkout') {
+      git url: 'https://github.com/adizalmanovich/Voting-App.git'
     }
-  }
   stages {
     stage('Build result') {
       steps {
