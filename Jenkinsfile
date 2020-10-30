@@ -1,9 +1,9 @@
 pipeline {
-  agent {
+  
     node {
-      label 'kubepod'
-      }	
-  }
+      
+      	
+  
   stages {
     stage('Build result') {
       steps {
@@ -62,5 +62,6 @@ pipeline {
         }
       }
     }
+  }	  
   }
 }
