@@ -1,10 +1,6 @@
 pipeline {
   
-    node {
-      
-      	
-  
-  stages {
+	node {
     stage('Build result') {
       steps {
 	sh """
@@ -62,6 +58,5 @@ pipeline {
         }
       }
     }
-  }	  
-  }
+  }	 
 }
